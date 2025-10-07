@@ -1,0 +1,69 @@
+name: 🐛 Bug Report
+description: Something isn't working as expected? Let us know!
+title: '[BUG] - '
+labels:
+  - "status/awaiting triage"
+body:
+  - type: checkboxes
+    id: attestations
+    attributes:
+      label: Attestations
+      description: "By checking the boxes below, I certify that:"
+      options:
+        - label: "I have read and agree to the [Code of Conduct](https://docs.nhcarrigan.com/community/coc/)"
+          validations:
+            required: true
+        - label: I have read and agree to the [Community Guidelines](https://docs.nhcarrigan.com/community/guide/).
+          validations:
+            required: true
+        - label: I have confirmed that the issue I am opening is unique, and has not already been reported (whether closed or not).
+          validations:
+            required: true
+        - label: I have reviewed the [Security Policy](https://docs.nhcarrigan.com/legal/security/) and have determined that this is not a security vulnerability.
+          validations:
+            required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Describe your Issue:"
+      description: A clear and concise description of what the bug is.
+      validations:
+        required: true
+  - type: dropdown
+    id: reproduce
+    attributes:
+      label: Can you reproduce this issue?
+      options:
+        - Yes
+        - No
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: "Steps to Reproduce:"
+      description: Steps to reproduce the behavior.
+  - type: input
+    id: os
+    attributes:
+      label: "Operating System:"
+      description: The operating system you are using, including the version/build number.
+    validations:
+      required: true
+# Remove this section for non-web apps.
+  - type: input
+    id: browser
+    attributes:
+      label: "Browser:"
+      description: The browser you are using, including the version number.
+    validations:
+      required: true
+  - type: dropdown
+    attributes:
+      label: Are you willing and able to contribute a fix?
+      options:
+        - Yes
+        - No
+    validations:
+      required: true
+

@@ -1,0 +1,91 @@
+name: "Pull Request Template"
+about: "Template for pulls"
+body:
+  - type: textarea
+    id: explain
+    attributes:
+      label: "Explanation"
+      description: "Briefly explain WHY this pull request is necessary. Do not explain what it does, as that's evidenced in the changes."
+      validations:
+        required: true
+  - type: input
+    id: issue
+    attributes:
+      label: "Issue"
+      description: "My pull request relates to or resolves the following issue number:"
+      validations:
+        required: true
+        is_number: true
+  - type: checkboxes
+    id: attestations
+    attributes:
+      label: Attestations
+      description: "By checking the boxes below, I certify that:"
+      options:
+        - label: "I have read and agree to the [Code of Conduct](https://docs.nhcarrigan.com/community/coc/)"
+          validations:
+            required: true
+        - label: I have read and agree to the [Community Guidelines](https://docs.nhcarrigan.com/community/guide/).
+          validations:
+            required: true
+        - label: My contribution complies with the [Contributor Covenant](https://docs.nhcarrigan.com/dev/covenant/).
+          validations:
+            required: true
+  - type: checkboxes
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: "My pull request adds or updates dependencies, so:"
+      options:
+        - label: I have pinned the dependencies to a specific patch version.
+          validations:
+            required: false
+  - type: checkboxes
+    id: style
+    attributes:
+      label: Style
+      description: "My contribution adheres to the following style guidelines:"
+      options:
+        - label: I have run the linter and resolved any errors.
+          validations:
+            required: true
+        - label: My pull request uses an appropriate title, matching the conventional commit standards.
+          validations:
+            required: true
+        - label: My scope of feat/fix/chore/etc. correctly matches the nature of changes in my pull request.
+          validations:
+            required: true
+  - type: checkboxes
+    id: tests
+    attributes:
+      label: Tests
+      description: "My contribution includes the following tests:"
+      options:
+        - label: My contribution adds new code, and I have added tests to cover it.
+          validations:
+            required: false
+        - label: My contribution modifies existing code, and I have updated the tests to reflect these changes.
+          validations:
+            required: false
+        - label: All new and existing tests pass locally with my changes.
+          validations:
+            required: true
+        - label: Code coverage remains at or above the configured threshold.
+          validations:
+            required: true
+  - type: input
+    id: docs
+    attributes:
+      label: Documentation
+      description: "I have made the following PR to update the documentation site with my changes:"
+      validations:
+        required: true
+  - type: dropdown
+    id: version
+    attributes:
+      label: Versioning
+      description: "I believe my changes should be included in the following release:"
+      options:
+        - "Major - My pull request introduces a breaking change."
+        - "Minor - My pull request introduces a new non-breaking feature."
+        - "Patch - My pull request introduces bug fixes ONLY."
