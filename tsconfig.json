@@ -2,6 +2,8 @@
     "extends": "@nhcarrigan/typescript-config",
     "compilerOptions": {
         "outDir": "./prod",
-        "rootDir": "./src"
+        "rootDir": "./src",
+        "sourceMap": true,
+        "declaration": true
     },
 }
