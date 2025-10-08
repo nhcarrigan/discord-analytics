@@ -1,6 +1,6 @@
 {
   "name": "@nhcarrigan/discord-analytics",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Package that pairs with our logging tool to provide analytics for our Discord bots.",
   "type": "module",
   "private": false,
