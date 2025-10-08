@@ -4,8 +4,8 @@
  * @author Naomi Carrigan
  */
 
-import { Logger } from "@nhcarrigan/logger";
 import { scheduleJob, type Job } from "node-schedule";
+import type { Logger } from "@nhcarrigan/logger";
 import type { Events, Client } from "discord.js";
 
 // eslint-disable-next-line complexity, max-lines-per-function, max-statements -- Justified
@@ -71,21 +71,17 @@ const flatten = (
  * A class for logging Discord bot analytics.
  */
 export class DiscordAnalytics {
-  private readonly logger: Logger;
-  private job:             Job | null = null;
+  private job: Job | null = null;
 
   /**
    * Creates a new instance of the DiscordAnalytics class.
    * @param client -- The Discord client to monitor.
-   * @param name -- The name of the application.
-   * @param logToken -- Auth token for our logging service.
+   * @param logger -- Instance of @nhcarrigan/logger to use for logging.
    */
   public constructor(
     private readonly client: Client,
-    name: string,
-    logToken: string,
+    private readonly logger: Logger,
   ) {
-    this.logger = new Logger(name, logToken);
   }
 
   /**
