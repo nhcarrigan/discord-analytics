@@ -1,0 +1,9 @@
+/.gitea/
+/.vscode/
+eslint.config.js
+.gitattributes
+.gitignore
+/src/
+
+# Ignore packed files so that npm pack can be run locally
+*.tgz

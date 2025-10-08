@@ -1,0 +1,32 @@
+{
+  "name": "@nhcarrigan/discord-analytics",
+  "version": "0.0.0",
+  "description": "Package that pairs with our logging tool to provide analytics for our Discord bots.",
+  "type": "module",
+  "private": false,
+  "main": "prod/index.js",
+  "scripts": {
+    "lint": "eslint src --max-warnings 0",
+    "build": "rm -rf prod && tsc",
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.18.0",
+  "devDependencies": {
+    "@nhcarrigan/eslint-config": "5.2.0",
+    "@nhcarrigan/typescript-config": "4.0.0",
+    "@types/node": "24.7.0",
+    "@types/node-schedule": "2.1.8",
+    "eslint": "9.37.0",
+    "typescript": "5.9.3"
+  },
+  "peerDependencies": {
+    "discord.js": "^14.0.0",
+    "@nhcarrigan/logger": ">=1.1.0-hotfix"
+  },
+  "dependencies": {
+    "node-schedule": "2.1.1"
+  }
+}

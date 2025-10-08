@@ -1,0 +1,38 @@
+name: Node.js CI
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    name: Lint and Test
+
+    steps:
+      - name: Checkout Source Files
+        uses: actions/checkout@v4
+
+      - name: Use Node.js v22
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Lint Source Files
+        run: pnpm run lint
+
+      - name: Verify Build
+        run: pnpm run build
+
+      - name: Run Tests
+        run: pnpm run test
