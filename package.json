@@ -6,6 +6,7 @@
   "private": false,
   "main": "prod/index.js",
   "scripts": {
+    "prepublish": "pnpm run lint && pnpm run build",
     "lint": "eslint src --max-warnings 0",
     "build": "rm -rf prod && tsc",
     "test": "echo \"Error: no test specified\" && exit 0"
