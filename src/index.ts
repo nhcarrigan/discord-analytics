@@ -4,7 +4,6 @@
  * @author Naomi Carrigan
  */
 
-import { flatten } from "flat";
 import { scheduleJob, type Job } from "node-schedule";
 import type { Logger } from "@nhcarrigan/logger";
 import type { Events, Client } from "discord.js";
@@ -23,8 +22,7 @@ export class DiscordAnalytics {
   public constructor(
     private readonly client: Client,
     private readonly logger: Logger,
-  ) {
-  }
+  ) {}
 
   /**
    * Starts a CRON job to run at midnight (system time) daily.
@@ -88,6 +86,11 @@ export class DiscordAnalytics {
     event: Events,
     payload: Record<string, unknown>,
   ): Promise<void> {
-    await this.logger.metric(event, 1, flatten(payload, { delimiter: "_" }));
+    await this.logger.metric(
+      event,
+      1,
+      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- We want to cast this to a specific type.
+      payload as Record<string, string | number>,
+    );
   }
 }
