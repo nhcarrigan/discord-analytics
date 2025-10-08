@@ -24,10 +24,11 @@
     "typescript": "5.9.3"
   },
   "peerDependencies": {
-    "discord.js": "^14.0.0",
-    "@nhcarrigan/logger": ">=1.1.0-hotfix"
+    "@nhcarrigan/logger": ">=1.1.0-hotfix",
+    "discord.js": "^14.0.0"
   },
   "dependencies": {
+    "flat": "6.0.1",
     "node-schedule": "2.1.1"
   }
 }

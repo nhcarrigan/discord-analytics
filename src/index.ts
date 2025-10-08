@@ -4,68 +4,10 @@
  * @author Naomi Carrigan
  */
 
+import { flatten } from "flat";
 import { scheduleJob, type Job } from "node-schedule";
 import type { Logger } from "@nhcarrigan/logger";
 import type { Events, Client } from "discord.js";
-
-// eslint-disable-next-line complexity, max-lines-per-function, max-statements -- Justified
-const flatten = (
-  object: Record<string, unknown>,
-): Record<string, string | number | boolean> => {
-  const result: Record<string, string | number | boolean> = {};
-  for (const key in object) {
-    const value = object[key];
-    if (value === null || value === undefined) {
-      continue;
-    }
-    if (
-      typeof value === "string"
-      || typeof value === "number"
-      || typeof value === "boolean"
-    ) {
-      result[key] = value;
-      continue;
-    }
-    if (typeof value === "object" && !Array.isArray(value)) {
-      // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- Justified
-      const nested = flatten(value as Record<string, unknown>);
-      for (const nestedKey in nested) {
-        const nestedValue = nested[nestedKey];
-        if (nestedValue === undefined) {
-          continue;
-        }
-        result[`${key}_${nestedKey}`] = nestedValue;
-      }
-      continue;
-    }
-    if (Array.isArray(value)) {
-      for (const [ index, arrayValue ] of value.entries()) {
-        if (
-          typeof arrayValue === "string"
-            || typeof arrayValue === "number"
-            || typeof arrayValue === "boolean"
-        ) {
-          result[`${key}_${index.toString()}`] = arrayValue;
-          continue;
-        }
-        if (typeof arrayValue === "object" && arrayValue !== null) {
-          // eslint-disable-next-line @typescript-eslint/consistent-type-assertions -- Justified
-          const nested = flatten(arrayValue as Record<string, unknown>);
-          for (const nestedKey in nested) {
-            const nestedValue = nested[nestedKey];
-            // eslint-disable-next-line max-depth -- Justified
-            if (nestedValue === undefined) {
-              continue;
-            }
-            result[`${key}_${index.toString()}_${nestedKey}`] = nestedValue;
-          }
-        }
-      }
-      continue;
-    }
-  }
-  return result;
-};
 
 /**
  * A class for logging Discord bot analytics.
@@ -146,6 +88,6 @@ export class DiscordAnalytics {
     event: Events,
     payload: Record<string, unknown>,
   ): Promise<void> {
-    await this.logger.metric(event, 1, flatten(payload));
+    await this.logger.metric(event, 1, flatten(payload, { delimiter: "_" }));
   }
 }
