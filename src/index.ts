@@ -34,7 +34,7 @@ export class DiscordAnalytics {
     if (this.job) {
       return;
     }
-    this.job = scheduleJob("metrics", "0 * * * *", async() => {
+    this.job = scheduleJob("metrics", "0 0 * * *", async() => {
       try {
         const fakeGuilds = await this.client.guilds.fetch();
         const guilds = await Promise.all(
