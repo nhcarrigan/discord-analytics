@@ -30,7 +30,7 @@ jobs:
         uses: naomi-lgbt/dependency-pin-check@main
         with:
           language: javascript
-          dev- dependencies: true
+          dev-dependencies: true
           peer-dependencies: true
           optional-dependencies: true
 
