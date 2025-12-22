@@ -23,7 +23,15 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v2
         with:
-          version: 9
+          version: 10
+
+      - name: Ensure Dependencies are Pinned
+        uses: naomi-lgbt/dependency-pin-check@v2.0.0
+        with:
+          language: javascript
+          dev- dependencies: true
+          peer-dependencies: true
+          optional-dependencies: true
 
       - name: Install Dependencies
         run: pnpm install
