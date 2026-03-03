@@ -1,0 +1,21 @@
+# Security
+
+# Do not execute any scripts of installed packages (project scripts still run)
+ignoreDepScripts: true
+# Do not automatically run pre/post scripts (e.g. preinstall, postbuild)
+enablePrePostScripts: false
+# Only allow packages published at least 10 days ago (reduces risk of compromised packages)
+minimumReleaseAge: 14400
+# Fail if a package's trust level has decreased compared to previous releases
+trustPolicy: no-downgrade
+# Ignore trust policy for packages published more than 1 year ago (predates provenance signing)
+trustPolicyIgnoreAfter: 525960
+# Fail if there are missing or invalid peer dependencies
+strictPeerDependencies: true
+# Prevent transitive dependencies from using exotic sources (git repos, direct tarball URLs)
+blockExoticSubdeps: true
+
+# Lockfile
+
+# Allow the lockfile to be updated during install (set to true in CI for stricter reproducibility)
+preferFrozenLockfile: false
